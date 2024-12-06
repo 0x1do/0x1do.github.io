@@ -63,7 +63,7 @@ languageName = "English"
     # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
     title = "0x1do"
     # subtitle shown in home page (HTML format is supported)
-    subtitle = "some writeups and sh1t... check out my About page"
+    subtitle = ""
     description = "My personal portfolio, showcasing me and my achievements in cybersecurity, as well as a blog where I share CTF write-ups, penetration testing insights, and other security-related content. 🚀 "
     # whether to use typeit animation for subtitle
     typeit = true
@@ -83,7 +83,7 @@ languageName = "English"
 # Social config about the author
 [params.social]
   GitHub = "0x1do"
-  Linkedin = "https://www.linkedin.com/in/ido-schwartzer%E2%80%AC%E2%80%8F-72ba122b8/"
+  Linkedin = "ido-schwartzer%E2%80%AC%E2%80%8F-72ba122b8/"
   Email = "ido.schwartzer@gmail.com"
 
 
