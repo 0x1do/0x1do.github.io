@@ -4,10 +4,10 @@
         <link>http://localhost:1313/tags/</link>
         <description>Tags - Tag - Ido&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ido.schwartzer@gmail.com (Ido Schwartzer)</managingEditor>
-            <webMaster>ido.schwartzer@gmail.com (Ido Schwartzer)</webMaster><lastBuildDate>Sat, 30 Nov 2024 19:30:32 &#43;0300</lastBuildDate><atom:link href="http://localhost:1313/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>ido.schwartzer@gmail.com (Ido Schwartzer)</webMaster><lastBuildDate>Fri, 06 Dec 2024 19:30:32 &#43;0300</lastBuildDate><atom:link href="http://localhost:1313/tags/" rel="self" type="application/rss+xml" /><item>
     <title>Heap</title>
     <link>http://localhost:1313/tags/heap/</link>
-    <pubDate>Sat, 30 Nov 2024 19:30:32 &#43;0300</pubDate>
+    <pubDate>Fri, 06 Dec 2024 19:30:32 &#43;0300</pubDate>
     <author>Ido Schwartzer</author>
     <guid>http://localhost:1313/tags/heap/</guid>
     <description><![CDATA[]]></description>
@@ -15,7 +15,7 @@
 <item>
     <title>Pwn</title>
     <link>http://localhost:1313/tags/pwn/</link>
-    <pubDate>Sat, 30 Nov 2024 19:30:32 &#43;0300</pubDate>
+    <pubDate>Fri, 06 Dec 2024 19:30:32 &#43;0300</pubDate>
     <author>Ido Schwartzer</author>
     <guid>http://localhost:1313/tags/pwn/</guid>
     <description><![CDATA[]]></description>
@@ -23,7 +23,7 @@
 <item>
     <title>Tw</title>
     <link>http://localhost:1313/tags/tw/</link>
-    <pubDate>Sat, 30 Nov 2024 19:30:32 &#43;0300</pubDate>
+    <pubDate>Fri, 06 Dec 2024 19:30:32 &#43;0300</pubDate>
     <author>Ido Schwartzer</author>
     <guid>http://localhost:1313/tags/tw/</guid>
     <description><![CDATA[]]></description>

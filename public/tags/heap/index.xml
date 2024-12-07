@@ -4,13 +4,15 @@
         <link>http://localhost:1313/tags/heap/</link>
         <description>Heap - Tag - Ido&#39;s blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><managingEditor>ido.schwartzer@gmail.com (Ido Schwartzer)</managingEditor>
-            <webMaster>ido.schwartzer@gmail.com (Ido Schwartzer)</webMaster><lastBuildDate>Sat, 30 Nov 2024 19:30:32 &#43;0300</lastBuildDate><atom:link href="http://localhost:1313/tags/heap/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>ido.schwartzer@gmail.com (Ido Schwartzer)</webMaster><lastBuildDate>Fri, 06 Dec 2024 19:30:32 &#43;0300</lastBuildDate><atom:link href="http://localhost:1313/tags/heap/" rel="self" type="application/rss+xml" /><item>
     <title>Hacknote</title>
     <link>http://localhost:1313/posts/hacknote/</link>
-    <pubDate>Sat, 30 Nov 2024 19:30:32 &#43;0300</pubDate>
+    <pubDate>Fri, 06 Dec 2024 19:30:32 &#43;0300</pubDate>
     <author>ido</author>
     <guid>http://localhost:1313/posts/hacknote/</guid>
-    <description><![CDATA[Introduction ]]></description>
+    <description><![CDATA[Introduction We are facing a 32 bit closed-source binary. The binary follows a simple functionallity:
+---------------------- HackNote ---------------------- 1. Add note 2. Delete note 3. Print note 4. Exit ---------------------- The binary don&rsquo;t have PIE and have Partial RELRO, now lets overview the functions for each option
+Reversing ]]></description>
 </item>
 </channel>
 </rss>
