@@ -24,6 +24,6 @@ The allocator has a set of functions and metadata where its goal is to manage a 
 Malloc's metadata contains heaps, chunks and arenas.
 
 Briefly:\
-heap - A big block of memory that can be broken down into chunks, when the program allocates memory it's taken from the heap.\
+heap - A large memory block that can be divided into smaller chunks, when the program allocates memory, it is taken from the heap.\
 arena - A structure that manages the allocation process in the heap.\
 chunk - A block of memory with varying sizes (within the heap).\
