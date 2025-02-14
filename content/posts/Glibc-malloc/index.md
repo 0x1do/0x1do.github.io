@@ -39,11 +39,11 @@ in-use chunk layout:
  malloc ptr                   user ptr
 
 ```
-AMP - **A**llocated Arena, **M**map'd, **P**rev in use
+AMP are flags that stands for - **A**llocated Arena, **M**map'd, **P**rev in use
 
 prev_size - When freeing a chunk, it writes down the size of a previous chunk\
 size - data + metadata size\
-Allocated Arena - If the chunk belongs to the allocated arena or mmap\
+Allocated Arena - If the chunk belongs to the allocated arena\
 Mmap'd - If it is mmapd\
 Prev in use - if the previous chuck in use (1 - true)
 
