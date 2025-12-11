@@ -1,0 +1,4 @@
+baseURL = 'https://0x1do.github.io/'
+languageCode = 'en-us'
+title = 'Ido Site'
+theme = 'contrast-hugo'

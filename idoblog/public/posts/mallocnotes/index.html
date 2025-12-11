@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<title>Glibc malloc notes | Ido Site</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.152.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="https://0x1do.github.io/css/index.css">
+<link rel="stylesheet" href="https://0x1do.github.io/PT-Sans/index.css">
+<link rel="canonical" href="https://0x1do.github.io/posts/mallocnotes/">
+<link rel="alternate" type="application/rss+xml" href="" title="Ido Site">
+
+
+<header class="hover">
+  <h1 class=""><a href="https://0x1do.github.io/">Ido Site</a></h1>
+  
+  
+    
+      
+    
+  
+  
+</header>
+
+<article>
+  <header class="meta">
+    <h1><a href="/posts/mallocnotes/">Glibc malloc notes</a></h1>
+    <time datetime="2025-01-19T18:22:32&#43;03:00">January 19, 2025</time>
+  </header>
+  <h2 id="introduction">Introduction</h2>
+<p>A collection of notes I&rsquo;ve taken while learning about malloc/heap internals.</p>
+<p>You are more than welcome to point out any errors and contribute to improving these notes :)</p>
+<h2 id="malloc">Malloc</h2>
+<p>The allocator has a set of functions and metadata where its goal is to manage a running program&rsquo;s dynamic memory.<br>
+Malloc&rsquo;s metadata contains heaps, chunks and arenas.</p>
+<p>Briefly:<br>
+heap - A large memory block that can be divided into smaller chunks, when the program allocates memory, it is taken from the heap.<br>
+arena - A structure that manages the allocation process in the heap.<br>
+chunk - A block of memory with varying sizes (within the heap).</p>
+<h3 id="chunks">Chunks</h3>
+<p>in-use chunk layout:</p>
+<pre tabindex="0"><code> 
+ +-------------+--------+-+-+-+-------------------------+
+ |  prev_size  |  size  |A|M|P|           data          |
+ +-------------+--------+-+-+-+-------------------------+
+ ↑                            ↑
+ malloc ptr                   user ptr
+</code></pre><p>AMP are flags that stands for - <strong>A</strong>llocated Arena, <strong>M</strong>map&rsquo;d, <strong>P</strong>rev in use</p>
+<p>prev_size - When freeing a chunk, it writes down the size of a previous chunk<br>
+size - data + metadata size<br>
+Allocated Arena - If the chunk belongs to the allocated arena<br>
+Mmap&rsquo;d - If it is mmapd<br>
+Prev in use - if the previous chuck in use (1 - true)</p>
+
+</article>
+
+
+<footer class="nowrap"><a class="dark" href="/posts/secretgarden/">« Secret Garden writeup</a>  <a class="dark" href="/posts/hacknote/">Hacknote writeup »</a></footer>
+
+
+</html>

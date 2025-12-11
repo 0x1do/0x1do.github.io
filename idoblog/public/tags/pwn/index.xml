@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pwn on Ido Site</title>
+    <link>https://0x1do.github.io/tags/pwn/</link>
+    <description>Recent content in Pwn on Ido Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 06 Dec 2024 19:30:32 +0300</lastBuildDate>
+    <atom:link href="https://0x1do.github.io/tags/pwn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hacknote writeup</title>
+      <link>https://0x1do.github.io/posts/hacknote/</link>
+      <pubDate>Fri, 06 Dec 2024 19:30:32 +0300</pubDate>
+      <guid>https://0x1do.github.io/posts/hacknote/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;We are facing a 32 bit closed-source binary.&#xA;The binary follows a simple functionallity:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;----------------------&#xA;       HackNote&#xA;----------------------&#xA; 1. Add note&#xA; 2. Delete note&#xA; 3. Print note&#xA; 4. Exit&#xA;----------------------&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The binary lacks PIE and features Partial RELRO.&lt;/p&gt;&#xA;&lt;h2 id=&#34;reversing&#34;&gt;Reversing&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s now review the functions associated with each option.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<title>Hacknote writeup | Ido Site</title>
+<meta charset="utf-8">
+<meta name="generator" content="Hugo 0.152.2">
+<meta name="description" content="Writeup to hacknote challenge in pwnable.tw">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="https://0x1do.github.io/css/index.css">
+<link rel="stylesheet" href="https://0x1do.github.io/PT-Sans/index.css">
+<link rel="canonical" href="https://0x1do.github.io/posts/hacknote/">
+<link rel="alternate" type="application/rss+xml" href="" title="Ido Site">
+
+
+<header class="hover">
+  <h1 class=""><a href="https://0x1do.github.io/">Ido Site</a></h1>
+  
+  
+    
+      
+    
+  
+  
+</header>
+
+<article>
+  <header class="meta">
+    <h1><a href="/posts/hacknote/">Hacknote writeup</a></h1>
+    <time datetime="2024-12-06T19:30:32&#43;03:00">December 06, 2024</time>
+  </header>
+  <h2 id="introduction">Introduction</h2>
+<p>We are facing a 32 bit closed-source binary.
+The binary follows a simple functionallity:</p>
+<pre tabindex="0"><code>----------------------
+       HackNote
+----------------------
+ 1. Add note
+ 2. Delete note
+ 3. Print note
+ 4. Exit
+----------------------
+</code></pre><p>The binary lacks PIE and features Partial RELRO.</p>
+<h2 id="reversing">Reversing</h2>
+<p>Let&rsquo;s now review the functions associated with each option.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"></code></pre></div>
+</article>
+
+
+<footer class="nowrap"><a class="dark" href="/posts/mallocnotes/">« Glibc malloc notes</a> <span></span></footer>
+
+
+</html>
