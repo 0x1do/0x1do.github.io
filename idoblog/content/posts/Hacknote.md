@@ -5,7 +5,6 @@ draft: false
 description: Writeup to hacknote challenge in pwnable.tw
 tags:
   - pwn
-  - tw
   - heap
 toc: false
 lastmod: 2024-12-06T19:30:32+03:00
