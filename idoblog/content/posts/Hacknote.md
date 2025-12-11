@@ -1,5 +1,5 @@
 ---
-title: Hacknote writeup
+title: Hacknote
 date: 2024-12-06T19:30:32+03:00
 draft: false
 description: Writeup to hacknote challenge in pwnable.tw
