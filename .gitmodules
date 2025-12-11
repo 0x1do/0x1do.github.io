@@ -1,9 +1,3 @@
-[submodule "themes/hugo-coder"]
-	path = idoblog/themes/hugo-coder
-	url = https://github.com/luizdepra/hugo-coder.git
-[submodule "idoblog/themes/LoveIt"]
-	path = idoblog/themes/LoveIt
-	url = https://github.com/dillonzq/LoveIt
 [submodule "idoblog/themes/contrast-hugo"]
 	path = idoblog/themes/contrast-hugo
 	url = https://github.com/dillonzq/LoveIt
